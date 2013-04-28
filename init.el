@@ -29,7 +29,7 @@
 (global-set-key [f5] 'refresh-file)
 ;; ------------------------- Settings -------------------------
 (setq default-frame-alist
-      '((height . 40) (width . 130) (menu-bar-lines . 20) (tool-bar-lines . 0))) ;;启动时窗口大小
+      '((height . 40) (width . 120) (menu-bar-lines . 20) (tool-bar-lines . 0))) ;;启动时窗口大小
 (define-key global-map "\C-c\C-t" 'goto-line);;自定义快速跳转到某行
 (define-key global-map "\C-c\C-v" 'ansi-term)
 ;; settings
