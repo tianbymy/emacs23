@@ -163,3 +163,12 @@
 (setq ac-auto-start 2)
 (setq ac-dwim t)
 (define-key ac-mode-map (kbd "M-TAB") 'auto-complete)
+;; ------------------sql mode ------------------
+(require 'sql-mode)
+
+(autoload 'sql-mode "sql-mode" "SQL Editing Mode" t)
+      (setq auto-mode-alist
+         (append '(("\\.sql$" . sql-mode)
+                   ("\\.proc$" . sql-mode)
+                   ("\\.sp$"  . sql-mode))
+                 auto-mode-alist))
