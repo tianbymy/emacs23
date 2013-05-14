@@ -105,6 +105,9 @@
 (setq py-install-directory "~/.emacs.d/lisp/python")
 (require 'python-mode)
 
+;; ------------------------- undo mode -------------------------
+(require 'undo-tree)
+(global-undo-tree-mode)
 
 ;; ------------------------- css mode -------------------------
 
