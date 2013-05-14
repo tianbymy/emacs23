@@ -175,3 +175,19 @@
                    ("\\.proc$" . sql-mode)
                    ("\\.sp$"  . sql-mode))
                  auto-mode-alist))
+
+;; ------------------ 整行  mode ------------------
+;;;; C-w 如果没有选中区域则删除整行
+;;;; M-w 如果没有选中区域则复制整行
+(defadvice kill-ring-save (before slickcopy activate compile)
+  "When called interactively with no active region, copy a single line instead."
+  (interactive
+   (if mark-active (list (region-beginning) (region-end))
+     (list (line-beginning-position)
+           (line-beginning-position 2)))))
+(defadvice kill-region (before slickcut activate compile)
+  "When called interactively with no active region, kill a single line instead."
+  (interactive
+   (if mark-active (list (region-beginning) (region-end))
+     (list (line-beginning-position)
+           (line-beginning-position 2)))))
