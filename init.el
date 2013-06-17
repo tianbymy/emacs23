@@ -134,6 +134,14 @@
 (add-to-list 'load-path "~/.emacs.d/lisp/ruby")
 (autoload 'ruby-mode "ruby-mode"
   "Mode for editing ruby source files")
+(autoload 'ruby-mode "ruby-mode" nil t)
+(add-to-list 'auto-mode-alist '("\\.gemspec\\'" . ruby-mode))
+(add-to-list 'auto-mode-alist '("Capfile" . ruby-mode))
+(add-to-list 'auto-mode-alist '("Gemfile" . ruby-mode))
+(add-to-list 'auto-mode-alist '("Rakefile" . ruby-mode))
+(add-to-list 'auto-mode-alist '("\\.rake\\'" . ruby-mode))
+(add-to-list 'auto-mode-alist '("\\.rb\\'" . ruby-mode))
+(add-to-list 'auto-mode-alist '("\\.ru\\'" . ruby-mode))
 (add-to-list 'auto-mode-alist '("\\.rb$" . ruby-mode))
 (add-to-list 'interpreter-mode-alist '("ruby" . ruby-mode))
 (autoload 'run-ruby "inf-ruby"
@@ -191,3 +199,10 @@
    (if mark-active (list (region-beginning) (region-end))
      (list (line-beginning-position)
            (line-beginning-position 2)))))
+;; -------------------行未的 ^M ----------------------
+(defun dos-unix () (interactive)
+   (goto-char (point-min))
+   (while (search-forward "\r" nil t) (replace-match "")))
+(defun unix-dos () (interactive)
+   (goto-char (point-min))
+   (while (search-forward "\n" nil t) (replace-match "\r\n")))
