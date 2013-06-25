@@ -206,3 +206,7 @@
 (defun unix-dos () (interactive)
    (goto-char (point-min))
    (while (search-forward "\n" nil t) (replace-match "\r\n")))
+;; ------------------zencoding mode ------------------
+(require 'zencoding-mode)
+;; Auto-start on any markup mode
+(add-hook 'sgml-mode-hook 'zencoding-mode)
