@@ -131,7 +131,13 @@
 (yas-global-mode 1)
 
 ;; ------------------------- Ruby On Rails -------------------------
+;;(setq load-path (cons "~/.emacs.d/emacs-rails" load-path))
+;;(require 'rails)
+
+
+
 (add-to-list 'load-path "~/.emacs.d/lisp/ruby")
+(add-to-list 'auto-mode-alist '("Gemfile" . ruby-mode))
 (autoload 'ruby-mode "ruby-mode"
   "Mode for editing ruby source files")
 (add-to-list 'auto-mode-alist '("\\.rb$" . ruby-mode))
@@ -191,3 +197,10 @@
    (if mark-active (list (region-beginning) (region-end))
      (list (line-beginning-position)
            (line-beginning-position 2)))))
+;; ------------------android mode ----------------
+(add-to-list 'load-path "~/.emacs.d/site-lisp/")
+(require 'android-mode)
+(custom-set-variables
+ '(android-mode-avd "test")
+ '(android-mode-sdk-dir "/zhiyisoft/progam/android-sdk-linux/"))
+
