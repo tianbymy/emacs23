@@ -206,15 +206,7 @@
    (if mark-active (list (region-beginning) (region-end))
      (list (line-beginning-position)
            (line-beginning-position 2)))))
-<<<<<<< HEAD
-;; ------------------android mode ----------------
-(add-to-list 'load-path "~/.emacs.d/site-lisp/")
-(require 'android-mode)
-(custom-set-variables
- '(android-mode-avd "test")
- '(android-mode-sdk-dir "/zhiyisoft/progam/android-sdk-linux/"))
 
-=======
 ;; -------------------行未的 ^M ----------------------
 (defun dos-unix () (interactive)
    (goto-char (point-min))
@@ -234,4 +226,11 @@
                       (css-mode "<style +type=\"text/css\"[^>]*>" "</style>")))
    (setq mweb-filename-extensions '("php" "htm" "html" "ctp" "phtml" "php4" "php5"))
    (multi-web-global-mode 1)
->>>>>>> c229eacc315bb5cc83a2ecaba63212d9c109b9ae
+
+
+;; ------------------android mode ----------------
+(add-to-list 'load-path "~/.emacs.d/site-lisp/")
+(require 'android-mode)
+(custom-set-variables
+ '(android-mode-avd "test")
+ '(android-mode-sdk-dir "/zhiyisoft/progam/android-sdk-linux/"))
