@@ -137,17 +137,18 @@
 
 
 (add-to-list 'load-path "~/.emacs.d/lisp/ruby")
-(add-to-list 'auto-mode-alist '("Gemfile" . ruby-mode))
-(add-to-list 'auto-mode-alist '("\\.rake$" . ruby-mode))
-(add-to-list 'auto-mode-alist '("\\.gemspec$" . ruby-mode))
-(add-to-list 'auto-mode-alist '("\\.ru$" . ruby-mode))
-(add-to-list 'auto-mode-alist '("Rakefile$" . ruby-mode))
-(add-to-list 'auto-mode-alist '("Capfile$" . ruby-mode))
-(add-to-list 'auto-mode-alist '("Vagrantfile$" . ruby-mode))
-
-
 (autoload 'ruby-mode "ruby-mode"
   "Mode for editing ruby source files")
+(autoload 'ruby-mode "ruby-mode" nil t)
+(add-to-list 'auto-mode-alist '("Capfile$" . ruby-mode))
+(add-to-list 'auto-mode-alist '("Vagrantfile$" . ruby-mode))
+(add-to-list 'auto-mode-alist '("\\.gemspec\\'" . ruby-mode))
+(add-to-list 'auto-mode-alist '("Capfile" . ruby-mode))
+(add-to-list 'auto-mode-alist '("Gemfile" . ruby-mode))
+(add-to-list 'auto-mode-alist '("Rakefile" . ruby-mode))
+(add-to-list 'auto-mode-alist '("\\.rake\\'" . ruby-mode))
+(add-to-list 'auto-mode-alist '("\\.rb\\'" . ruby-mode))
+(add-to-list 'auto-mode-alist '("\\.ru\\'" . ruby-mode))
 (add-to-list 'auto-mode-alist '("\\.rb$" . ruby-mode))
 (add-to-list 'interpreter-mode-alist '("ruby" . ruby-mode))
 (autoload 'run-ruby "inf-ruby"
@@ -205,6 +206,7 @@
    (if mark-active (list (region-beginning) (region-end))
      (list (line-beginning-position)
            (line-beginning-position 2)))))
+<<<<<<< HEAD
 ;; ------------------android mode ----------------
 (add-to-list 'load-path "~/.emacs.d/site-lisp/")
 (require 'android-mode)
@@ -212,3 +214,24 @@
  '(android-mode-avd "test")
  '(android-mode-sdk-dir "/zhiyisoft/progam/android-sdk-linux/"))
 
+=======
+;; -------------------行未的 ^M ----------------------
+(defun dos-unix () (interactive)
+   (goto-char (point-min))
+   (while (search-forward "\r" nil t) (replace-match "")))
+(defun unix-dos () (interactive)
+   (goto-char (point-min))
+   (while (search-forward "\n" nil t) (replace-match "\r\n")))
+;; ------------------zencoding mode ------------------
+(require 'zencoding-mode)
+;; Auto-start on any markup mode
+(add-hook 'sgml-mode-hook 'zencoding-mode)
+;; ------------------multi-web mode ------------------
+(require 'multi-web-mode)
+   (setq mweb-default-major-mode 'html-mode)
+   (setq mweb-tags '((php-mode "<\\?php\\|<\\? \\|<\\?=" "\\?>")
+                      (js-mode "<script +\\(type=\"text/javascript\"\\|language=\"javascript\"\\)[^>]*>" "</script>")
+                      (css-mode "<style +type=\"text/css\"[^>]*>" "</style>")))
+   (setq mweb-filename-extensions '("php" "htm" "html" "ctp" "phtml" "php4" "php5"))
+   (multi-web-global-mode 1)
+>>>>>>> c229eacc315bb5cc83a2ecaba63212d9c109b9ae
