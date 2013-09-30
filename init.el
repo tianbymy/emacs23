@@ -27,6 +27,10 @@
 ;;设置打开文件的缺省路径
 (setq default-directory "~/work")
 
+;;使用emacs 24内嵌的功能
+;;(require 'electric)
+;;(electric-pair-mode t)
+
 ;;font================================================================
 (set-face-attribute
  'default nil :font "Monaco 10")
@@ -114,6 +118,7 @@
 (setq auto-mode-alist
       (append '(("\\.css$" . css-mode))
 	      auto-mode-alist))
+(add-to-list 'auto-mode-alist '("\\.scss\\'" . sass-mode))
 (add-to-list 'load-path
 	     "~/.emacs.d/lisp/color-theme")
 (require 'color-theme)
@@ -133,8 +138,13 @@
 ;; ------------------------- Ruby On Rails -------------------------
 ;;(setq load-path (cons "~/.emacs.d/emacs-rails" load-path))
 ;;(require 'rails)
-
-
+;;; rhtml mode
+(add-to-list 'load-path "~/.emacs.d/plugins/rhtml")
+(require 'rhtml-mode)
+(autoload 'rhtml-mode "rhtml-mode" "RHTML" t)
+(add-to-list 'auto-mode-alist '("\\.rhtml$" . rhtml-mode))
+(add-to-list 'auto-mode-alist '("\\.erb$" . rhtml-mode))
+(add-to-list 'auto-mode-alist '("\\.html\.erb$" . rhtml-mode))
 
 (add-to-list 'load-path "~/.emacs.d/lisp/ruby")
 (autoload 'ruby-mode "ruby-mode"
